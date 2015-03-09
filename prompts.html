@@ -90,7 +90,7 @@
 
                 <!-- First Post -->
                 <h2>
-                    <a href="#">Daily Flash Report</a>
+                    <a href="#">Daily Flash Report - Prompts Available</a>
                 </h2>
 
                 <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2014 at 10:00 PM</p>
@@ -107,22 +107,56 @@
 				
 				NOTE: Be sure that the Environment URI and OBIEE Web Service settings are configured in the BITeamwork Control Panel are set per the documentation.
 				-->
-
+				
+				
+				<select id="tw_prompt1" onchange="console.log( this.options[this.selectedIndex].value ); location.reload();">
+					<option value="2010">Year - 2010</option>
+					<option value="2011">Year - 2011</option>
+					<option value="2012">Year - 2012</option>
+				</select>
+				
+				<select id="tw_prompt2" onchange="console.log( this.options[this.selectedIndex].value ); location.reload();">
+				    <option value="">All Brands</option>
+					<option value="BizTech">BizTech</option>
+					<option value="FunPod">FunPod</option>
+					<option value="HomeView">HomeView</option>
+				</select>
+				
+				<select id="tw_prompt3" onchange="console.log( this.options[this.selectedIndex].value ); location.reload();">
+					<option value="">All Products</option>
+					<option value="Bluetooth Adaptor">Bluetooth Adaptor</option>
+					<option value="Game Station">Game Station</option>
+					<option value="Maintenance">Maintenance</option>
+				</select>
 
 			   <div id="biteamworkembedbi_7960db28-9302-4368-a775-fcd0fa1eeade"></div>
 			   <script type="text/javascript">
+			   var tw_prompt1 = document.getElementById("tw_prompt1");
+			   var tw_prompt1_val = tw_prompt1.options[tw_prompt1.selectedIndex].value;
+			   console.log( tw_prompt1_val );
+			   
+			   var tw_prompt2 = document.getElementById("tw_prompt2");
+			   var tw_prompt2_val = tw_prompt2.options[tw_prompt2.selectedIndex].value;
+			   console.log( tw_prompt2_val );
+			   
+			   var tw_prompt3 = document.getElementById("tw_prompt3");
+			   var tw_prompt3_val = tw_prompt3.options[tw_prompt3.selectedIndex].value;
+			   console.log( tw_prompt3_val );
+			   
+			   
+			   
 			   // Override Embedded BI Object CSS Stylings API (Do not modify unless customizations are needed)
 			   var bitw_obiee_solution='BITeamwork';
 			   var bitw_multivalue_dblquote_delim='^';
-			   //var bitw_7960db28_9302_4368_a775_fcd0fa1eeade_itemStyle = '{"width":"504px","height":"205px"}';
-			   //var bitw_7960db28_9302_4368_a775_fcd0fa1eeade_infoStyle = '{}';
-			   //var bitw_7960db28_9302_4368_a775_fcd0fa1eeade_promptParams='{"prompts":[{"col": "Time.T05 Per Name Year", "op": "eq", "val": "' + tw_prompt1_val + '"}]}'; 
+			   var bitw_7960db28_9302_4368_a775_fcd0fa1eeade_itemStyle = '{"width":"534px","height":"275px"}';
+			   var bitw_7960db28_9302_4368_a775_fcd0fa1eeade_infoStyle = '{"width":"420px"}';
+
+
+			   //var bitw_0a20c6f6_7bc3_4c04_bed7_6f01118319bf_promptParams='{"prompts":[{"col": "Time.T05 Per Name Year", "op": "eq", "val": "' + tw_prompt1_val + '"}]}'; 
+			   var bitw_7960db28_9302_4368_a775_fcd0fa1eeade_promptParams='{"prompts":[{"col": "Time.T05 Per Name Year", "op": "eq", "val": "' + tw_prompt1_val + '"},{"col": "Products.P4  Brand", "op": "eq", "val": "' + tw_prompt2_val + '"},{"col": "Products.P1  Product", "op": "eq", "val": "' + tw_prompt3_val + '"}]}'; 
 			   //console.log( bitw_7960db28_9302_4368_a775_fcd0fa1eeade_promptParams );	   
 			   </script>
 			   <script async src="http://teamworkbar.dev/bitw/x/embedbi/getobiartifactjs/7960db28-9302-4368-a775-fcd0fa1eeade/a/29894849/381-177/v2"></script>
-                
-                
-                
                 <!-- 
 				*** END UPDATE SECTION ***
 				-->
@@ -131,7 +165,7 @@
 
                 <hr>
                 <p>
-                	<a href="prompts.html">Try Embedded BI for OBIEE with Prompts</a>
+                	<a href="/">Return to Main Page</a>
                 </p>
                 <hr>
                 <p>
