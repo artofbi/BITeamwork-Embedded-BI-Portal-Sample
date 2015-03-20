@@ -93,7 +93,32 @@
                     <a href="#">Daily Flash Report</a>
                 </h2>
 
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2014 at 10:00 PM</p>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on 
+                
+                <script type="text/javascript">
+                var today = new Date();
+				var dd = today.getDate();
+				var mm = today.getMonth()+1; //January is 0!
+				var yyyy = today.getFullYear();
+				var time = today.toLocaleTimeString();
+
+				if(dd<10) {
+					dd='0'+dd
+				} 
+
+				if(mm<10) {
+					mm='0'+mm
+				} 
+
+				today = mm+'/'+dd+'/'+yyyy;
+				document.write(today + ' ' + time);
+                </script>
+                
+                <br/>
+                August 28, 2014 at 10:00 PM (<span style="color: lightblue">Static Time in Demo Portal</span>)</p>
+                
+                
+                <span>NOTE: Embedded Oracle BI content below this line</span>
                 <hr>
                 
                 
@@ -119,7 +144,8 @@
 			   //var bitw_7960db28_9302_4368_a775_fcd0fa1eeade_promptParams='{"prompts":[{"col": "Time.T05 Per Name Year", "op": "eq", "val": "' + tw_prompt1_val + '"}]}'; 
 			   //console.log( bitw_7960db28_9302_4368_a775_fcd0fa1eeade_promptParams );	   
 			   </script>
-			   <script async src="http://teamworkbar.dev/bitw/x/embedbi/getobiartifactjs/7960db28-9302-4368-a775-fcd0fa1eeade/a/29894849/381-177/v2"></script>
+			   <script async src="http://localhost:7780/bitw/x/embedbi/getobiartifactjs/7960db28-9302-4368-a775-fcd0fa1eeade/a/29894849/381-177/v2"></script>
+                
                 
                 
                 
