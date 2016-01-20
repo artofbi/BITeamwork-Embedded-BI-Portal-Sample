@@ -23,6 +23,47 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    
+    <script>
+    
+     // creates a qs by passing in URL and json string of name/value
+	 function appendQueryString(url, queryVars) {
+		 var firstSeperator = (url.indexOf('?')==-1 ? '?' : '&');
+		 var queryStringParts = new Array();
+		 for(var key in queryVars) {
+			 queryStringParts.push(key + '=' + queryVars[key]);
+		 }
+		 var queryString = queryStringParts.join('&');
+		 return url + firstSeperator + queryString;
+	 }
+	 
+	 
+	 // get the url values by calling hte function and the key needed, ex: var fType = getUrlVars()["type"];
+	 function getUrlVars() {
+	   var vars = {};
+	   var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
+	   function(m,key,value) {
+		 vars[key] = value;
+	   });
+	   return vars;
+	 }
+
+
+	 // Reloads the page and sets the qs to the values of the prompts selected
+	 function bitwPageReload(){
+	 
+	 	var url = "/prompts.html?q=test";
+		var queryVars = {'tw_prompt1':tw_prompt1.options[tw_prompt1.selectedIndex].value
+		, 'tw_prompt2':tw_prompt2.options[tw_prompt2.selectedIndex].value, 'tw_prompt3':tw_prompt3.options[tw_prompt3.selectedIndex].value };
+		var new_url = appendQueryString(url, queryVars);
+		
+		window.location.href = new_url;
+	 
+	 }
+	 
+	 
+    </script>
 
 </head>
 
@@ -129,56 +170,70 @@
 				-->
 				
 				
-				<select id="tw_prompt1" onchange="console.log( this.options[this.selectedIndex].value ); location.reload();">
+				<!-- 
+				 <select id="tw_prompt1" onchange="console.log( this.options[this.selectedIndex].value ); location.reload();">
+					 <option value="Finance">Finance</option>
+					 <option value="Human Resources">Human Resources</option>
+					 <option value="Supply Chain">Supply Chain</option>
+				 </select>
+				
+				 -->
+				
+				
+				<select id="tw_prompt1" onchange="console.log( this.options[this.selectedIndex].value ); bitwPageReload();">
 					<option value="2010">Year - 2010</option>
 					<option value="2011">Year - 2011</option>
 					<option value="2012">Year - 2012</option>
 				</select>
-				
-				<select id="tw_prompt2" onchange="console.log( this.options[this.selectedIndex].value ); location.reload();">
-				    <option value="">All Brands</option>
+
+				<select id="tw_prompt2" onchange="console.log( this.options[this.selectedIndex].value ); bitwPageReload();">
+					<option value="">All Brands</option>
 					<option value="BizTech">BizTech</option>
 					<option value="FunPod">FunPod</option>
 					<option value="HomeView">HomeView</option>
 				</select>
-				
-				<select id="tw_prompt3" onchange="console.log( this.options[this.selectedIndex].value ); location.reload();">
+
+				<select id="tw_prompt3" onchange="console.log( this.options[this.selectedIndex].value ); bitwPageReload();">
 					<option value="">All Products</option>
 					<option value="Bluetooth Adaptor">Bluetooth Adaptor</option>
 					<option value="Game Station">Game Station</option>
 					<option value="Maintenance">Maintenance</option>
 				</select>
 
-			   <div id="biteamworkembedbi_7960db28-9302-4368-a775-fcd0fa1eeade"></div>
-			   <script type="text/javascript">
-			   var tw_prompt1 = document.getElementById("tw_prompt1");
-			   var tw_prompt1_val = tw_prompt1.options[tw_prompt1.selectedIndex].value;
-			   console.log( tw_prompt1_val );
-			   
-			   var tw_prompt2 = document.getElementById("tw_prompt2");
-			   var tw_prompt2_val = tw_prompt2.options[tw_prompt2.selectedIndex].value;
-			   console.log( tw_prompt2_val );
-			   
-			   var tw_prompt3 = document.getElementById("tw_prompt3");
-			   var tw_prompt3_val = tw_prompt3.options[tw_prompt3.selectedIndex].value;
-			   console.log( tw_prompt3_val );
-			   
-			   
-			   
-			   // Override Embedded BI Object CSS Stylings API (Do not modify unless customizations are needed)
-			   var bitw_obiee_solution='BITeamwork';
-			   var bitw_multivalue_dblquote_delim='^';
-			   var bitw_7960db28_9302_4368_a775_fcd0fa1eeade_itemStyle = '{"width":"534px","height":"275px"}';
-			   var bitw_7960db28_9302_4368_a775_fcd0fa1eeade_infoStyle = '{"width":"420px"}';
-			   //var bitw_0a20c6f6_7bc3_4c04_bed7_6f01118319bf_promptParams='{"prompts":[{"col": "Time.T05 Per Name Year", "op": "eq", "val": "' + tw_prompt1_val + '"}]}'; 
-			   var bitw_7960db28_9302_4368_a775_fcd0fa1eeade_promptParams='{"prompts":[{"col": "Time.T05 Per Name Year", "op": "eq", "val": "' + tw_prompt1_val + '"},{"col": "Products.P4  Brand", "op": "eq", "val": "' + tw_prompt2_val + '"},{"col": "Products.P1  Product", "op": "eq", "val": "' + tw_prompt3_val + '"}]}'; 
-			   //console.log( bitw_7960db28_9302_4368_a775_fcd0fa1eeade_promptParams );	   
-			   </script>
-			   <script async src="http://localhost:7780/bitw/x/embedbi/getobiartifactjs/7960db28-9302-4368-a775-fcd0fa1eeade/a/29894849/381-177/v2"></script>
-                
-  
-                
-                
+
+
+				<div id="biteamworkembedbi_0f365786-2b6c-4474-8a95-dc981c25a55c"></div>
+				<script>
+				var tw_prompt1 = document.getElementById("tw_prompt1");
+				var tw_prompt1_val = getUrlVars()["tw_prompt1"] || tw_prompt1.options[tw_prompt1.selectedIndex].value;
+				tw_prompt1.value=decodeURIComponent(tw_prompt1_val);
+				console.log( tw_prompt1_val );
+
+				var tw_prompt2 = document.getElementById("tw_prompt2");
+				var tw_prompt2_val = getUrlVars()["tw_prompt2"] || tw_prompt2.options[tw_prompt2.selectedIndex].value;
+				tw_prompt2.value=decodeURIComponent(tw_prompt2_val);
+				console.log( tw_prompt2_val );
+
+				var tw_prompt3 = document.getElementById("tw_prompt3");
+				var tw_prompt3_val = getUrlVars()["tw_prompt3"] || tw_prompt3.options[tw_prompt3.selectedIndex].value;
+				tw_prompt3.value=decodeURIComponent(tw_prompt3_val);
+				console.log( tw_prompt3_val );
+
+
+
+
+
+				// Override Embedded BI Object CSS Stylings API (Do not modify unless customizations are needed)
+				//var bitw_obiee_solution='BITeamwork'
+				//var bitw_multivalue_dblquote_delim='^'
+				//var bitw_61126b80_279f_4802_ad8d_a54e3b483b3e_itemStyle = '{"width":"390px","height":"135px"}';
+				//var bitw_61126b80_279f_4802_ad8d_a54e3b483b3e_infoStyle = '{"width":"390px"}';
+				//var bitw_61126b80_279f_4802_ad8d_a54e3b483b3e_promptParams = '{"prompts":[{"col": "Time.T05 Per Name Year", "op": "eq", "val": "' + tw_prompt1_val + '"}]}';
+				var bitw_0f365786_2b6c_4474_8a95_dc981c25a55c_promptParams = '{"prompts":[{"col": "Time.T05 Per Name Year", "op": "eq", "val": "' + tw_prompt1_val + '"},{"col": "Products.P4  Brand", "op": "eq", "val": "' + tw_prompt2_val + '"},{"col": "Products.P1  Product", "op": "eq", "val": "' + tw_prompt3_val + '"}]}';
+				</script>
+				<script async src="http://localhost:9704/bitw/x/embedbi/getobiartifactjs/0f365786-2b6c-4474-8a95-dc981c25a55c/a/29894849/385-128/v2"></script>
+   
+				
                 <!-- 
 				*** END UPDATE SECTION ***
 				-->
